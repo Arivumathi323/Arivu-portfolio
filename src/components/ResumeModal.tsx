@@ -136,8 +136,8 @@ const ResumeModal = () => {
                 <GraduationCap size={18} /> Education
               </h3>
               <div className="border-l-2 border-cyan-400 pl-4">
-                <h4 className="font-medium text-gray-900">B.Tech in Computer Science Engineering</h4>
-                <p className="text-sm text-cyan-600">University Name • 2021 - 2025</p>
+                <h4 className="font-medium text-gray-900">B.E in Computer Science Engineering</h4>
+                <p className="text-sm text-cyan-600">Madras Engineering College • 2021 - 2025</p>
                 <p className="text-gray-600 text-sm mt-1">
                   Relevant coursework: Data Structures, Algorithms, Machine Learning, Database Systems
                 </p>
