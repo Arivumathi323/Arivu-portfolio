@@ -1,5 +1,6 @@
-import { Facebook, Twitter, Instagram, Linkedin, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Astronaut3D from "./Astronaut3D";
+import ResumeModal from "./ResumeModal";
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -49,34 +50,16 @@ const HeroSection = () => {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 box-glow hover:box-glow-intense transition-all duration-300 font-semibold px-8"
-            >
-              <Download className="mr-2" size={18} />
-              Download CV
-            </Button>
+            {/* CTA Button - Resume Modal */}
+            <ResumeModal />
           </div>
 
-          {/* Profile Image */}
+          {/* 3D Astronaut */}
           <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="relative animate-float">
-              {/* Glow effect */}
-              <div className="absolute inset-0 hexagon bg-primary/30 blur-[40px] scale-110" />
-              
-              {/* Hexagon container */}
-              <div className="relative w-72 h-80 md:w-80 md:h-96 hexagon bg-gradient-to-b from-primary/20 to-secondary flex items-center justify-center animate-pulse-glow">
-                <div className="w-[calc(100%-8px)] h-[calc(100%-8px)] hexagon bg-card flex items-center justify-center overflow-hidden">
-                  <div className="w-full h-full hexagon bg-gradient-to-br from-secondary to-card flex items-center justify-center">
-                    <span className="text-6xl md:text-7xl font-bold text-primary text-glow">A</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 border-2 border-primary rounded-full animate-pulse" />
-              <div className="absolute -bottom-2 -left-6 w-4 h-4 bg-primary rounded-full animate-pulse" />
+            <div className="relative w-80 h-96 md:w-96 md:h-[500px]">
+              {/* Glow effect behind astronaut */}
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[80px]" />
+              <Astronaut3D />
             </div>
           </div>
         </div>
