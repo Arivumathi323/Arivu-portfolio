@@ -1,11 +1,11 @@
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/arivu.mathi323?igsh=aGZoemgwNGg2NHV2", label: "Instagram" },
+  { icon: Github, href: "https://github.com/Arivumathi323", label: "GitHub" },
+  { icon: MessageCircle, href: "https://wa.me/918122167396", label: "WhatsApp" },
+  { icon: Mail, href: "mailto:arivumathi323@gmail.com", label: "Email" },
 ];
 
 const HeroSection = () => {
