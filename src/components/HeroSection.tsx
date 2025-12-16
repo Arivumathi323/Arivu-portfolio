@@ -9,6 +9,18 @@ const socialLinks = [
 ];
 
 const HeroSection = () => {
+  const openExternal = (href: string) => {
+    // In some embedded previews, popups/new tabs may be blocked.
+    const win = window.open(href, "_blank", "noopener,noreferrer");
+    if (!win) {
+      try {
+        window.top?.location.assign(href);
+      } catch {
+        window.location.assign(href);
+      }
+    }
+  };
+
   return (
     <section
       id="home"
@@ -44,6 +56,10 @@ const HeroSection = () => {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openExternal(href);
+                  }}
                   className="w-10 h-10 rounded-full border border-primary/50 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:box-glow"
                 >
                   <Icon size={18} />
