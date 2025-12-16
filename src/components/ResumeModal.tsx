@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Download, FileText, Mail, MapPin, Phone, GraduationCap, Briefcase, Code, Loader2 } from "lucide-react";
+import { Download, FileText, Mail, Phone, GraduationCap, Briefcase, Code, Loader2, MessageCircle } from "lucide-react";
+import { Github, Instagram } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import html2pdf from "html2pdf.js";
@@ -63,14 +64,33 @@ const ResumeModal = () => {
         <div className="flex flex-col gap-6">
           {/* Resume Content - PDF Target */}
           <div ref={resumeRef} className="bg-white text-gray-900 rounded-lg p-6 space-y-6">
-            {/* Header */}
+            {/* Profile Picture & Header */}
             <div className="text-center border-b border-gray-200 pb-4">
-              <h2 className="text-3xl font-bold text-gray-900">Arivumathi</h2>
+              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
+                A
+              </div>
+              <p className="text-gray-600 text-sm mb-2">Hi, I am</p>
+              <h2 className="text-3xl font-bold text-gray-900">ARIVUMATHI</h2>
               <p className="text-cyan-600 text-lg font-medium">AI & Automation Developer</p>
-              <div className="flex flex-wrap justify-center gap-4 mt-3 text-gray-600 text-sm">
-                <span className="flex items-center gap-1"><Mail size={14} /> arivumathi@example.com</span>
-                <span className="flex items-center gap-1"><Phone size={14} /> +91 98765 43210</span>
-                <span className="flex items-center gap-1"><MapPin size={14} /> India</span>
+              
+              {/* Contact Links */}
+              <div className="flex flex-wrap justify-center gap-3 mt-4 text-gray-600 text-sm">
+                <a href="mailto:arivumathi323@gmail.com" className="flex items-center gap-1 hover:text-cyan-600 transition-colors">
+                  <Mail size={14} /> arivumathi323@gmail.com
+                </a>
+                <a href="https://wa.me/918122167396" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-green-600 transition-colors">
+                  <MessageCircle size={14} /> +91 8122167396
+                </a>
+              </div>
+              
+              {/* Social Links */}
+              <div className="flex justify-center gap-4 mt-3">
+                <a href="https://github.com/Arivumathi323" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  <Github size={16} /> GitHub
+                </a>
+                <a href="https://www.instagram.com/arivu.mathi323?igsh=aGZoemgwNGg2NHV2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-gray-600 hover:text-pink-600 transition-colors text-sm">
+                  <Instagram size={16} /> Instagram
+                </a>
               </div>
             </div>
 
