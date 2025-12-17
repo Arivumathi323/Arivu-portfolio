@@ -1,5 +1,7 @@
 import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
 import ResumeModal from "./ResumeModal";
+import CharacterScene from "./CharacterScene";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/arivu.mathi323?igsh=aGZoemgwNGg2NHV2", label: "Instagram" },
@@ -9,8 +11,9 @@ const socialLinks = [
 ];
 
 const HeroSection = () => {
+  const isMobile = useIsMobile();
+
   const openExternal = (href: string) => {
-    // In some embedded previews, popups/new tabs may be blocked.
     const win = window.open(href, "_blank", "noopener,noreferrer");
     if (!win) {
       try {
@@ -71,25 +74,28 @@ const HeroSection = () => {
             <ResumeModal />
           </div>
 
-          {/* Profile Image - Hexagon */}
+          {/* 3D Character or Mobile Fallback */}
           <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="relative animate-float">
-              {/* Glow effect */}
-              <div className="absolute inset-0 hexagon bg-primary/30 blur-[40px] scale-110" />
-              
-              {/* Hexagon container */}
-              <div className="relative w-72 h-80 md:w-80 md:h-96 hexagon bg-gradient-to-b from-primary/20 to-secondary flex items-center justify-center animate-pulse-glow">
-                <div className="w-[calc(100%-8px)] h-[calc(100%-8px)] hexagon bg-card flex items-center justify-center overflow-hidden">
-                  <div className="w-full h-full hexagon bg-gradient-to-br from-secondary to-card flex items-center justify-center">
-                    <span className="text-6xl md:text-7xl font-bold text-primary text-glow">A</span>
-                  </div>
+            {isMobile ? (
+              /* Mobile Fallback */
+              <div className="relative text-center animate-float">
+                <div className="w-64 h-64 bg-primary/10 rounded-full blur-[60px] absolute inset-0 m-auto" />
+                <div className="relative z-10 p-8">
+                  <span className="text-8xl block mb-4 animate-wave">👋</span>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    Hi, I'm Arivumathi!
+                  </h3>
+                  <p className="text-primary text-glow font-medium">
+                    AI & Automation Developer
+                  </p>
                 </div>
               </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 border-2 border-primary rounded-full animate-pulse" />
-              <div className="absolute -bottom-2 -left-6 w-4 h-4 bg-primary rounded-full animate-pulse" />
-            </div>
+            ) : (
+              /* Desktop 3D Character */
+              <div className="w-80 h-96 md:w-96 md:h-[450px] relative">
+                <CharacterScene />
+              </div>
+            )}
           </div>
         </div>
       </div>

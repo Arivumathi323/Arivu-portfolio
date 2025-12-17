@@ -147,6 +147,12 @@
   .animate-scale-in {
     animation: scale-in 0.4s ease-out forwards;
   }
+
+  .animate-wave {
+    animation: wave 1.5s ease-in-out infinite;
+    display: inline-block;
+    transform-origin: 70% 70%;
+  }
 }
 
 @keyframes float {
@@ -195,5 +201,29 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60%, 100% {
+    transform: rotate(0deg);
   }
 }
