@@ -1,10 +1,11 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Download, FileText, Mail, Phone, GraduationCap, Briefcase, Code, Loader2, MessageCircle } from "lucide-react";
+import { Download, FileText, Mail, GraduationCap, Briefcase, Code, Loader2, MessageCircle } from "lucide-react";
 import { Github, Instagram } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import html2pdf from "html2pdf.js";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const ResumeModal = () => {
   const resumeRef = useRef<HTMLDivElement>(null);
@@ -66,9 +67,11 @@ const ResumeModal = () => {
           <div ref={resumeRef} className="bg-white text-gray-900 rounded-lg p-6 space-y-6">
             {/* Profile Picture & Header */}
             <div className="text-center border-b border-gray-200 pb-4">
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-                A
-              </div>
+              <img 
+                src={profilePhoto} 
+                alt="Arivumathi" 
+                className="w-24 h-24 mx-auto mb-4 rounded-full object-cover shadow-lg border-2 border-cyan-400"
+              />
               <p className="text-gray-600 text-sm mb-2">Hi, I am</p>
               <h2 className="text-3xl font-bold text-gray-900">ARIVUMATHI</h2>
               <p className="text-cyan-600 text-lg font-medium">AI & Automation Developer</p>

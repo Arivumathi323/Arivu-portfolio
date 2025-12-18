@@ -1,7 +1,6 @@
 import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
 import ResumeModal from "./ResumeModal";
-import CharacterScene from "./CharacterScene";
-import { useIsMobile } from "@/hooks/use-mobile";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/arivu.mathi323?igsh=aGZoemgwNGg2NHV2", label: "Instagram" },
@@ -11,8 +10,6 @@ const socialLinks = [
 ];
 
 const HeroSection = () => {
-  const isMobile = useIsMobile();
-
   const openExternal = (href: string) => {
     const win = window.open(href, "_blank", "noopener,noreferrer");
     if (!win) {
@@ -74,28 +71,18 @@ const HeroSection = () => {
             <ResumeModal />
           </div>
 
-          {/* 3D Character or Mobile Fallback */}
+          {/* Profile Photo */}
           <div className="flex-1 flex justify-center lg:justify-end">
-            {isMobile ? (
-              /* Mobile Fallback */
-              <div className="relative text-center animate-float">
-                <div className="w-64 h-64 bg-primary/10 rounded-full blur-[60px] absolute inset-0 m-auto" />
-                <div className="relative z-10 p-8">
-                  <span className="text-8xl block mb-4 animate-wave">👋</span>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    Hi, I'm Arivumathi!
-                  </h3>
-                  <p className="text-primary text-glow font-medium">
-                    AI & Automation Developer
-                  </p>
-                </div>
+            <div className="relative animate-float">
+              <div className="w-64 h-64 md:w-80 md:h-80 bg-primary/20 rounded-full blur-[60px] absolute inset-0 m-auto" />
+              <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 box-glow">
+                <img 
+                  src={profilePhoto} 
+                  alt="Arivumathi - AI & Automation Developer" 
+                  className="w-full h-full object-cover"
+                />
               </div>
-            ) : (
-              /* Desktop 3D Character */
-              <div className="w-80 h-96 md:w-96 md:h-[450px] relative">
-                <CharacterScene />
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
