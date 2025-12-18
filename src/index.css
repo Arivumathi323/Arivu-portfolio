@@ -153,6 +153,10 @@
     display: inline-block;
     transform-origin: 70% 70%;
   }
+
+  .animate-photo-bounce {
+    animation: photo-bounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
 }
 
 @keyframes float {
@@ -225,5 +229,26 @@
   }
   60%, 100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes photo-bounce {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-30px) scale(1.05) rotate(-5deg);
+  }
+  40% {
+    transform: translateY(-15px) scale(1.02) rotate(3deg);
+  }
+  60% {
+    transform: translateY(-25px) scale(1.03) rotate(-2deg);
+  }
+  80% {
+    transform: translateY(-5px) scale(1.01) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
   }
 }

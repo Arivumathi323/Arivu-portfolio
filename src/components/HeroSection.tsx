@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
 import ResumeModal from "./ResumeModal";
+import ParticleBackground from "./ParticleBackground";
 import profilePhoto from "@/assets/profile-photo.png";
 
 const socialLinks = [
@@ -10,6 +12,8 @@ const socialLinks = [
 ];
 
 const HeroSection = () => {
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const openExternal = (href: string) => {
     const win = window.open(href, "_blank", "noopener,noreferrer");
     if (!win) {
@@ -21,11 +25,21 @@ const HeroSection = () => {
     }
   };
 
+  const handlePhotoClick = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 800);
+    }
+  };
+
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden"
     >
+      {/* Particle Background */}
+      <ParticleBackground />
+
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
       <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" />
@@ -71,17 +85,30 @@ const HeroSection = () => {
             <ResumeModal />
           </div>
 
-          {/* Profile Photo */}
+          {/* Profile Photo with Click Animation */}
           <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="relative animate-float">
-              <div className="w-64 h-64 md:w-80 md:h-80 bg-primary/20 rounded-full blur-[60px] absolute inset-0 m-auto" />
-              <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 box-glow">
+            <div 
+              className={`relative animate-float cursor-pointer transition-transform duration-300 hover:scale-105 ${
+                isAnimating ? "animate-photo-bounce" : ""
+              }`}
+              onClick={handlePhotoClick}
+            >
+              <div className={`w-64 h-64 md:w-80 md:h-80 bg-primary/20 rounded-full blur-[60px] absolute inset-0 m-auto transition-all duration-300 ${
+                isAnimating ? "bg-primary/40 scale-110" : ""
+              }`} />
+              <div className={`relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/50 box-glow transition-all duration-300 ${
+                isAnimating ? "border-primary box-glow-intense" : ""
+              }`}>
                 <img 
                   src={profilePhoto} 
                   alt="Arivumathi - AI & Automation Developer" 
                   className="w-full h-full object-cover"
                 />
               </div>
+              {/* Click hint */}
+              <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-muted-foreground opacity-60">
+                Click me! 👆
+              </p>
             </div>
           </div>
         </div>
